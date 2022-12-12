@@ -7,22 +7,22 @@
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/RCAhiGJsUUE/1920x1080')">
+            <div class="carousel-item active" style="background-image: url('/carousel/John Wick Parabellum.jpg')">
                 <div class="carousel-caption">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
+                    <h1><b>John Wick 3: Parabellum</b></h1>
+                    <p>Caption placeholder Caption placeholder Caption placeholder Caption placeholder Caption placeholder Caption placeholder</p>
                 </div>
             </div>
-            <div class="carousel-item" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1920x1080')">
+            <div class="carousel-item" style="background-image: url('/carousel/Spy x Family.png')">
                 <div class="carousel-caption">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
+                    <h1><b>Spy x Family</b></h1>
+                    <p>Caption placeholder Caption placeholder Caption placeholder Caption placeholder Caption placeholder Caption placeholder</p>
                 </div>
             </div>
-            <div class="carousel-item" style="background-image: url('/posters/Avengers Endgame.jpg')">
+            <div class="carousel-item" style="background-image: url('/carousel/Avengers Endgame.jpg')">
                 <div class="carousel-caption">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
+                    <h1><b>Avengers: Endgame</b></h1>
+                    <p>Caption placeholder Caption placeholder Caption placeholder Caption placeholder Caption placeholder Caption placeholder</p>
                 </div>
             </div>
         </div>
@@ -43,7 +43,6 @@
                     <img class="card-img-top" src="/posters/Avengers Endgame.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">TITLE</h5>
-                        <p class="card-text">by<br>ASJKFDJK</p>
                     </div>
                     </a>
                 </div>
@@ -53,19 +52,17 @@
                     <img class="card-img-top" src="/posters/Moonlight.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">TITLE</h5>
-                        <p class="card-text">by<br>ASJKFDJK</p>
                     </div>
                     </a>
                 </div>
         </div>
-        <h3 class="subtitle"><b>Trending Now</b></h3>
+        <h3 class="subtitle"><b>New Episode Weekly</b></h3>
         <div class="cards">
             <div class="card" style="width: 18rem;">
                 <a href="">
                     <img class="card-img-top" src="/posters/Avengers Endgame.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">TITLE</h5>
-                        <p class="card-text">by<br>ASJKFDJK</p>
+                        <h5 class="card-title"><b>TITLE</b></h5>
                     </div>
                 </a>
             </div>
@@ -75,7 +72,6 @@
                     <img class="card-img-top" src="/posters/Moonlight.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">TITLE</h5>
-                        <p class="card-text">by<br>ASJKFDJK</p>
                     </div>
                 </a>
             </div>

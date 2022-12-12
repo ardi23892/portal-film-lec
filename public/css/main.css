@@ -1,15 +1,16 @@
 .carousel-item {
     height: 65vh;
     min-height: 350px;
-    background: no-repeat center center scroll;
+    background: no-repeat 50% 10% scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    box-shadow: inset 0 -150px 50px 0 rgba(0,0,0,0.7);
 }
 
-body{
-    font-family: 'Montserrat';
+.carousel-caption{
+    font-family:'Poppins';
 }
 
 .outer {
@@ -35,10 +36,11 @@ h1{
 
 .subtitle{
     margin: 1em 0;
+    font-family: 'Poppins';
 }
 
 .navbar{
-    font-family: 'Montserrat';
+    font-family: 'Poppins';
     background: darkred;
     left: 0;
     right: 0;
@@ -107,16 +109,23 @@ h1{
 
 .container .cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
     grid-gap: 1rem;
 }
 
 
 .card{
-    font-family: 'Montserrat';
-    color: black;
+    font-family: 'Poppins';
+}
+
+.card a{
     text-decoration: none;
+    color: black;
+}
+
+.card a:hover{
+    color: #010203;
 }
 
 .card:hover{
