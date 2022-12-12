@@ -15,7 +15,12 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('type_id');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
+            $table->string('title');
+            $table->text('synopsis');
+            $table->string('imagePath');
+            $table->year('year');
         });
     }
 

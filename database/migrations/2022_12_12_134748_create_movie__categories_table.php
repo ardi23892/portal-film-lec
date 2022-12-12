@@ -13,9 +13,12 @@ class CreateMovieCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('movie__categories', function (Blueprint $table) {
+        Schema::create('movie_categories', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('movie_id');
+            $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
+            $table->foreignId('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateMovieCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movie__categories');
+        Schema::dropIfExists('movie_categories');
     }
 }
