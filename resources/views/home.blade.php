@@ -62,7 +62,9 @@
         <h3 class="subtitle"><b>New Episode Weekly</b></h3>
         <div class="cards">
             <div class="card" style="width: 18rem;">
-                <a href="{{asset('details')}}">
+                <a href="Route::get('/details', function () {
+    return view('details');
+});">
                     <img class="card-img-top" src="/posters/Avengers Endgame.jpg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title"><b>TITLE</b></h5>

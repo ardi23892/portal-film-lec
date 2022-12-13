@@ -14,9 +14,9 @@
                     </div>
                 </div>
             </li>
-            <li><a href="">Movies</a></li>
-            <li><a href="">Series</a></li>
-            <li><a href="">Anime</a></li>
+            <li><a href="{{asset('types')}}">Movies</a></li>
+            <li><a href="{{asset('types')}}">Series</a></li>
+            <li><a href="{{asset('types')}}">Anime</a></li>
         </ul>
         <ul>
             <li><input type="text" placeholder="Search.."></li>
