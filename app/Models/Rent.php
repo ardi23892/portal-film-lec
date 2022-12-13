@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Type extends Model
+class Rent extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+    public  $timestamps=false;
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
     public function movie(){
-        return $this->hasMany(Movie::class);
+        return $this->belongsTo(Movie::class);
     }
 }

@@ -9,4 +9,8 @@ class Carousel extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function movie(){
+        return $this->belongsTo(Movie::class);
+    }
 }

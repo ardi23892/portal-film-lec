@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Watchlist;
 use Illuminate\Database\Seeder;
 
 class WatchlistSeeder extends Seeder
@@ -14,5 +15,19 @@ class WatchlistSeeder extends Seeder
     public function run()
     {
         //
+        Watchlist::query()->insert([
+            [
+                'movie_id'=>1,
+                'user_id'=>1
+            ],
+            [
+                'movie_id'=>1,
+                'user_id'=>2
+            ],
+            [
+                'movie_id'=>1,
+                'user_id'=>3
+            ]
+        ]);
     }
 }

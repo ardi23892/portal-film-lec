@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Type;
 use Illuminate\Database\Seeder;
 
-class TypeSeeder extends Seeder
+class RentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +14,5 @@ class TypeSeeder extends Seeder
     public function run()
     {
         //
-        Type::query()->insert([
-            ['name'=>'Movie'],
-            ['name'=>'Series'],
-            ['name'=>'Anime']
-        ]);
     }
 }
