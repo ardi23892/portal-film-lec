@@ -21,6 +21,7 @@ class CreateMoviesTable extends Migration
             $table->text('synopsis');
             $table->string('imagePath');
             $table->year('year');
+            $table->string('rated');
         });
     }
 

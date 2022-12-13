@@ -1,5 +1,5 @@
-<div class="outer">
-    <div class="container navbar">
+<div class="header outer">
+    <div class="header container navbar">
         <ul>
             <li><a href="/">Home</a></li>
             <li><div class="dropdown">

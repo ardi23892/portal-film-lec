@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.poster{
+    width: 360px;
+    height: auto;
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+}
+
+.movie-container{
+    width: 80%;
+    height: auto;
+    border: 2px solid rgba(255,255,255, 0.4);
+    background: none;
+    backdrop-filter: blur(20px);
+    position: relative;
+    box-shadow: 0 0 30px -10px black;
+}
+
+.movie-container img{
+    float: right;
+}
+
+.title{
+    position: absolute;
+    color: white;
+    padding: 50px 80px;
+    font-size: 50px;
+    font-family: "Franklin Gothic Medium","Arial Narrow",Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.synopsis{
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    color: white;
+}
+
+.watchlist{
+    position: absolute;
+    top: 70%;
+    left: 5%;
+    padding: 20px 70px;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: none;
+    color: white;
+    font-family: "Franklin Gothic Medium","Arial Narrow",Arial, sans-serif;
+}
+
+.watchlist:hover{
+    background: rgba(255,255,255, 0.4);
+}

@@ -15,16 +15,14 @@
 
 .outer {
     background: darkred;
-    padding: 1em 0;
 }
 
-header{
+.header{
     text-align: center;
 }
 
 footer{
     padding-bottom: 9px;
-    margin-top: 20px;
     background: black;
     color: white;
     text-align: center;
@@ -61,8 +59,13 @@ h1{
 .navbar a{
     color: white;
     text-decoration: none;
-    padding: 25px 20px;
+    padding: 15px 20px;
     text-align: center;
+}
+
+.navbar a:hover{
+    color: white;
+    background: black;
 }
 
 .navbar .dropdown{
@@ -70,14 +73,17 @@ h1{
 }
 
 .dropbtn{
+    padding: 15px 20px;
     color: white;
     border: none;
     cursor: pointer;
     background: darkred;
+
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    color: royalblue;
+    color: white;
+    background: black;
 }
 
 .dropdown {
@@ -103,12 +109,14 @@ h1{
 
 .dropdown-content a:hover {
     background-color: #ddd;
+    color: black;
 }
 
 .show {display:block;}
 
 .container .cards {
     display: grid;
+    margin-bottom: 20px;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
     grid-gap: 1rem;
