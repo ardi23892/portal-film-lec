@@ -38,7 +38,8 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="container">
+    <div class="background">
+        <div class="container">
         <h3 class="subtitle"><b>Trending Now</b></h3>
         <div class="cards">
                 <div class="card" style="width: 18rem;">
@@ -101,6 +102,7 @@
                 </a>
             </div>
         </div>
+    </div>
     </div>
 
 @endsection

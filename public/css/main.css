@@ -1,5 +1,5 @@
 .carousel-item {
-    height: 65vh;
+    height: 80vh;
     min-height: 350px;
     background: no-repeat 50% 10% scroll;
     -webkit-background-size: cover;
@@ -11,6 +11,11 @@
 
 .carousel-caption{
     font-family:'Poppins';
+}
+
+.background{
+    background-image: url('/background.jpg');
+    background-size: cover;
 }
 
 .outer {
@@ -33,7 +38,8 @@ h1{
 }
 
 .subtitle{
-    margin: 1em 0;
+    padding: 1em 0;
+    color: white;
     font-family: 'Poppins';
 }
 
@@ -116,7 +122,7 @@ h1{
 
 .container .cards {
     display: grid;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: auto;
     grid-gap: 1rem;

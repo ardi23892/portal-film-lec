@@ -64,3 +64,22 @@
 .watchlist:hover{
     background: rgba(255,255,255, 0.4);
 }
+
+.rent{
+    position: absolute;
+    top: 70%;
+    left: 30%;
+    padding: 20px 70px;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background: darkred;
+    color: white;
+    font-family: "Franklin Gothic Medium","Arial Narrow",Arial, sans-serif;
+}
+
+.rent:hover{
+    background: white;
+    color: darkred;
+    border: 2px solid darkred;
+}

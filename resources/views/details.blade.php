@@ -15,6 +15,7 @@
                     way through the streets of New York as he becomes the target of the world's most ruthless killers.</p>
             </div>
             <button class="watchlist">Add to Watchlist</button>
+            <button class="rent">Rent for Price</button>
             <img  class="poster" src="/posters/John Wick Parabellum.jpg" alt="Poster">
         </div>
     </div>
