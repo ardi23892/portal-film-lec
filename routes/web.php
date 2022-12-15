@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+//Route::get('/', function () {
+//    return view('home');
+//});
 
-Route::get('/details', function () {
-    return view('details');
-});
+Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/details/{id}', [PageController::class, 'details']);
+Route::get('/types', [PageController::class, 'types'])->name('types');
+Route::get('/admin', [PageController::class, 'admin'])->name('admin.home');
+Route::get('/admin/create', [AdminController::class, 'create'])->name('create');
 
-Route::get('/types', function () {
-    return view('types');
-});
+Route::post('/admin/create', [AdminController::class, 'store'])->name('create_new_content');

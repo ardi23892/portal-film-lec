@@ -20,17 +20,19 @@ class MovieSeeder extends Seeder
                 'type_id'=>1,
                 'title'=>'Avengers Endgame',
                 'synopsis'=>'This is a synopsis',
-                'imagePath'=>'/posters/Avengers Endgame.jpg',
+                'poster'=>'/posters/Avengers Endgame.jpg',
+                'backdrop'=>'/backdrop/Avengers Endgame.png',
                 'year'=>2019,
-                'price'=>'49.000'
+                'price'=>49000
             ],
             [
                 'type_id'=>1,
                 'title'=>'John Wick 3: Parabellum',
                 'synopsis'=>'This is a synopsis',
-                'imagePath'=>'/posters/John Wick Parabellum.jpg',
+                'poster'=>'/posters/John Wick Parabellum.jpg',
+                'backdrop'=>'/backdrop/John Wick Parabellum.jpg',
                 'year'=>2019,
-                'price'=>'39.000'
+                'price'=>39000
             ]
         ]);
     }

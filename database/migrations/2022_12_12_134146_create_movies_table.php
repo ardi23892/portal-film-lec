@@ -19,9 +19,10 @@ class CreateMoviesTable extends Migration
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
             $table->string('title');
             $table->text('synopsis');
-            $table->string('imagePath');
+            $table->string('poster');
+            $table->string('backdrop');
             $table->year('year');
-            $table->string('price');
+            $table->integer('price');
         });
     }
 
