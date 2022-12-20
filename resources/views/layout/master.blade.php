@@ -16,7 +16,11 @@
     <title>@yield('title')</title>
 </head>
 <header>
-    @include('layout.header')
+    @if(\Illuminate\Support\Facades\Auth::check())
+        @include('layout.header')
+    @else
+        @include('layout.guest-header')
+    @endif
 </header>
 <body>
 @yield('content')

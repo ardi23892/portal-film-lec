@@ -71,4 +71,26 @@ class PageController extends Controller
             'categories'=>$categories
         ]);
     }
+
+    public function index_register(){
+
+        $types= Type::all();
+        $categories= Category::all();
+
+        return view('auth.register', [
+            'types'=>$types,
+            'categories'=>$categories
+        ]);
+    }
+
+    public function index_login(){
+
+        $types= Type::all();
+        $categories= Category::all();
+
+        return view('auth.login',[
+            'types'=>$types,
+            'categories'=>$categories
+        ]);
+    }
 }

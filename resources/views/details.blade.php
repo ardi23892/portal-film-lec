@@ -12,8 +12,13 @@
             <div class="synopsis">
                 <p>{{ $movie->synopsis }}</p>
             </div>
-            <button class="watchlist">Add to Watchlist</button>
-            <button class="rent">Rent for Price</button>
+            @if(\Illuminate\Support\Facades\Auth::check())
+                <a class="watchlist">Add to Watchlist</a>
+                <a class="rent">Rent for Rp {{ number_format($movie->price) }}</a>
+            @else
+                <a href="{{route('index_login')}}" class="watchlist">Add to Watchlist</a>
+                <a href="{{route('index_login')}}" class="rent">Rent for Rp {{ number_format($movie->price) }}</a>
+            @endif
             <img  class="poster" src="/storage/{{ $movie->poster }}" alt="Poster">
         </div>
     </div>

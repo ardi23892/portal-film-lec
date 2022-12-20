@@ -2,8 +2,8 @@
 @section('title', 'Login Page')
 @section('content')
 <div class="background p-5" style="height: 86vh">
-    <div class="container" style="width:400px">
-        <div class="card" style="background: rgba(139, 0, 0)">
+    <div class="container" style="width:700px">
+        <div class="card" style="background: darkred; padding: 1rem">
             <form action="{{route('login')}}" method="post">
                 @csrf
                 <div class="mb-3  m-2">
@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div class="mb-2 d-flex flex-column align-items-start">
                         <label for="email" class="form-label text-light">Email address</label>
-                        <input type="email" name ="email" class="form-control" id="email" placeholder="name@example.com">
+                        <input type="email" name ="email" class="form-control" id="email" placeholder="name@example.com" value="{{old('email')}}">
                       </div>
                       <div class="mb-2 d-flex flex-column align-items-start">
                         <label for="password" class="form-label text-light">Password</label>
@@ -26,7 +26,7 @@
                       </div>
                       <div class="mb-2">
                         @if ($errors->any())
-                          <p class="text-danger">{{$errors->first()}}</p>
+                          <div class=" alert alert-danger">{{$errors->first()}}</div>
                         @endif
                       </div>
                       <div class="mb-2">

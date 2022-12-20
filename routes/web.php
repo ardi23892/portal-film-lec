@@ -32,3 +32,11 @@ Route::get('admin/edit/{id}', [AdminController::class, 'show']);
 
 Route::post('/admin/create', [AdminController::class, 'store'])->name('create_new_content');
 Route::post('/admin/edit/{id}', [AdminController::class, 'edit']);
+
+Route::get('/login', [PageController::class, 'index_login'])->name('index_login');
+Route::post('/auth/login', [AdminController::class, 'login'])->name('login');
+
+Route::get('/register', [PageController::class, 'index_register'])->name('index_register');
+Route::post('/auth/register', [AdminController::class, 'register'])->name('register');
+
+Route::post('/auth/logout', [AdminController::class, 'logout'])->name('logout');

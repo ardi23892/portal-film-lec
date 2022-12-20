@@ -2,8 +2,8 @@
 @section('title', 'Register Page')
 @section('content')
 <div class="background pb-5 pt-5">
-    <div class="container" style="width:400px">
-        <div class="card" style="background: darkred">
+    <div class="container" style="width:700px">
+        <div class="card" style="background: darkred; padding: 1rem">
             <form action="{{route('register')}}" method="post">
               @csrf
               <div class="mb-3  m-2">
@@ -11,12 +11,12 @@
               </div>
               <div class="card-body">
                   <div class="mb-2 d-flex flex-column align-items-start">
-                    <label for="name" class="form-label text-light">name</label>
-                    <input type="text" name ="name" class="form-control" id="name" placeholder="user">
+                    <label for="name" class="form-label text-light">Name</label>
+                    <input type="text" name ="name" class="form-control" id="name" placeholder="Your Name" value="{{old('name')}}">
                   </div>
                   <div class="mb-2 d-flex flex-column align-items-start">
                     <label for="email" class="form-label text-light">Email address</label>
-                    <input type="email" name ="email" class="form-control" id="email" placeholder="name@example.com">
+                    <input type="email" name ="email" class="form-control" id="email" placeholder="johndoe@example.com" value="{{old('email')}}">
                   </div>
                   <div class="mb-2 d-flex flex-column align-items-start">
                     <label for="password" class="form-label text-light">Password</label>
@@ -35,7 +35,7 @@
                   <br>
                   <div class="mb-2">
                     @if ($errors->any())
-                    <p class="text-danger">{{$errors->first()}}</p>
+                    <div class="alert alert-danger">{{$errors->first()}}</div>
                     @endif
                   </div>
                   <div class="mb-2">
