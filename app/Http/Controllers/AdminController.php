@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Type;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -21,6 +23,42 @@ class AdminController extends Controller
 
         return view('admin.create-content',[
             'title'=>'Create New Content | Portal Film',
+            'types'=>$types,
+            'categories'=>$categories
+        ]);
+    }
+
+    public function category($id){
+        $types= Type::all();
+        $categories= Category::all();
+
+        $category = Category::find($id);
+        $content = $category->movie;
+        $title = $category->name.' | Portal Film';
+        $subtitle = 'Category/'.$category->name;
+
+        return view('admin.admin',[
+            'title'=>$title,
+            'subtitle'=>$subtitle,
+            'content'=>$content,
+            'types'=>$types,
+            'categories'=>$categories
+        ]);
+    }
+
+    public function type($id){
+        $types= Type::all();
+        $categories= Category::all();
+
+        $type = Type::find($id);
+        $content = $type->movie;
+        $title = $type->name.' | Portal Film';
+        $subtitle = 'Type/'.$type->name;
+
+        return view('admin.admin',[
+            'title'=>$title,
+            'subtitle'=>$subtitle,
+            'content'=>$content,
             'types'=>$types,
             'categories'=>$categories
         ]);
@@ -50,8 +88,8 @@ class AdminController extends Controller
             'synopsis'=>'required',
             'price'=>'required',
             'type'=>'required',
-            'poster'=>'required|mimes:jpg,jpeg,png',
-            'backdrop'=>'required|mimes:jpg,jpeg,png'
+            'poster'=>'required|image',
+            'backdrop'=>'required|image'
         ]);
 
         $poster = $request->poster->store('posters');
@@ -78,7 +116,15 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+       $content = Movie::find($id);
+        $types= Type::all();
+        $categories= Category::all();
+       return view('admin.edit-content', [
+           'content'=>$content,
+           'types'=>$types,
+           'categories'=>$categories
+       ]);
+
     }
 
     /**
@@ -87,9 +133,42 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'year'=>'required',
+            'synopsis'=>'required',
+            'price'=>'required',
+            'type'=>'required',
+            'poster'=>'image',
+            'backdrop'=>'image'
+        ]);
+
+        $content = Movie::find($id);
+        $content->title = $request->input('title');
+        $content->year = $request->input('year');
+        $content->synopsis = $request->input('synopsis');
+        $content->price = $request->input('price');
+        $content->type_id = $request->input('type');
+
+        if($request->hasFile('poster')){
+            $dir = 'storage/'.$content->poster;
+            File::delete($dir);
+            $poster =$request->poster->store('posters');
+            $content->poster = $poster;
+        }
+
+        if($request->hasFile('backdrop')){
+            $dir = 'storage/'.$content->backdrop;
+            File::delete($dir);
+            $backdrop =$request->backdrop->store('backdrop');
+            $content->backdrop = $backdrop;
+        }
+
+        $content->save();
+
+        return redirect()->route('admin.home');
     }
 
     /**

@@ -61,9 +61,11 @@ class PageController extends Controller
         $content = Movie::all();
         $types= Type::all();
         $categories= Category::all();
+        $subtitle = 'All';
 
         return view('admin.admin',[
             'title'=>'Admin | Portal Film',
+            'subtitle'=>$subtitle,
             'content'=>$content,
             'types'=>$types,
             'categories'=>$categories

@@ -7,14 +7,14 @@
                     <button onclick="showCategories()" class="dropbtn">Categories</button>
                     <div class="dropdown-content" id="categories">
                         @foreach($categories as $ctg)
-                            <a href="">{{ $ctg->name }}</a>
+                            <a href="/admin/category/{{$ctg->id}}">{{ $ctg->name }}</a>
                             {{--                            <a href="{{asset("category/$ctg->id")}}">{{ $ctg->name }}</a>--}}
                         @endforeach
                     </div>
                 </div>
             </li>
             @foreach($types as $type)
-                <li><a href="{{asset('types')}}">{{ $type->name }}</a></li>
+                <li><a href="/admin/type/{{$type->id}}">{{ $type->name }}</a></li>
             @endforeach
         </ul>
         <ul>

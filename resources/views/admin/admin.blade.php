@@ -4,31 +4,34 @@
 @endsection
 @section('content')
     <div class="container">
-        <h3 class="subtitle" style=""><b>All Content List</b></h3>
-        <table class="table table-stripped">
+        <h3 class="subtitle" style=""><b>/{{ $subtitle }}/Content List</b></h3>
+        <a href="{{route('create')}}" class="btn btn-success">Add new content</a>
+        <table class="table table-bordered">
             <tr>
                 <th>ID</th>
+                <th>Poster Image</th>
                 <th>Title</th>
+                <th>Released Year</th>
+                <th style="width: 500px">Synopsis</th>
                 <th>Content Type</th>
+                <th>Price</th>
                 <th>Action</th>
             </tr>
             @foreach($content as $ct)
                 <tr>
                     <td>{{ $ct->id }}</td>
                     <td>{{ $ct->title }}</td>
+                    <td><img src="{{asset("storage/$ct->poster")}}" style="width: 100px; height: auto"></td>
+                    <td>{{ $ct->year }}</td>
+                    <td>{{ $ct->synopsis }}</td>
                     <td>{{ $ct->type['name'] }}</td>
+                    <td>{{ $ct->price }}</td>
                     <td>
-                        <a class="btn btn-info">Edit</a>
+                        <a href="/admin/edit/{{ $ct->id }}" class="btn btn-info">Edit</a>
                         <a class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             @endforeach
-            <tr>
-                <td colspan="3"></td>
-                <td>
-                    <a href="{{route('create')}}" class="btn btn-success">Add new content</a>
-                </td>
-            </tr>
         </table>
     </div>
 @endsection
