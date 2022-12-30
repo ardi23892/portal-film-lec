@@ -14,7 +14,7 @@
                 </div>
             </li>
             @foreach($types as $type)
-                <li><a href="{{asset('types')}}">{{ $type->name }}</a></li>
+                <li><a href="{{asset("type/$type->id")}}">{{ $type->name }}</a></li>
             @endforeach
         </ul>
         <ul>

@@ -22,7 +22,8 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/details/{id}', [PageController::class, 'details']);
-Route::get('/types', [PageController::class, 'types'])->name('types');
+Route::get('/type/{id}', [PageController::class, 'types'])->name('types');
+Route::get('/category/{id}', [PageController::class, 'categories']);
 Route::get('/admin', [PageController::class, 'admin'])->name('admin.home');
 
 Route::get('/admin/category/{id}', [AdminController::class, 'category']);

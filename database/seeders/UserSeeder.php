@@ -23,18 +23,18 @@ class UserSeeder extends Seeder
                 'role'=>'Admin'
 
             ],
-            [
-                'name'=>'Ardian',
-                'email'=>'b@b.com',
-                'password'=>'abcde',
-                'role'=>'Member'
-            ],
-            [
-                'name'=>'Cakra',
-                'email'=>'c@c.com',
-                'password'=>'abcde',
-                'role'=>'Member'
-            ]
+//            [
+//                'name'=>'Ardian',
+//                'email'=>'b@b.com',
+//                'password'=>'abcde',
+//                'role'=>'Member'
+//            ],
+//            [
+//                'name'=>'Cakra',
+//                'email'=>'c@c.com',
+//                'password'=>'abcde',
+//                'role'=>'Member'
+//            ]
         ]);
     }
 }

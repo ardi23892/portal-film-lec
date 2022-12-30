@@ -1,29 +1,23 @@
 @extends('layout.master')
 @section('title')
-    Movie Type
+    {{$type->name}} | Portal Film
 @endsection
 @section('content')
     <div class="background">
         <div class="container">
-        <h3 class="subtitle"><b>Anime Collection</b></h3>
+        <h3 class="subtitle"><b>{{ $type->name }} Collection</b></h3>
         <div class="cards">
-            <div class="card" style="width: 18rem;">
-                <a href="{{asset('details')}}">
-                    <img class="card-img-top" src="/storage/posters/Avengers Endgame.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>TITLE</b></h5>
-                    </div>
-                </a>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <a href="{{asset('details')}}">
-                    <img class="card-img-top" src="/storage/posters/Moonlight.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">TITLE</h5>
-                    </div>
-                </a>
-            </div>
+            @foreach($content as $ct)
+                <div class="card" style="width: 18rem;">
+                    <a href="{{asset("details/$ct->id")}}">
+                        <img class="card-img-top" src="/storage/{{ $ct->poster }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $ct->title }}</h5>
+                            <p>{{ $ct->year }}</p>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
     </div>

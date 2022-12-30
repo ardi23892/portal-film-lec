@@ -172,9 +172,14 @@ class AdminController extends Controller
         ]);
 
         if(!Auth::attempt($credential,$request->input('remember'))){
-            return redirect()->back()->withErrors('invalid email or password');
+            return redirect()->back()->withErrors('Invalid email or password');
         }
-        return redirect()->route('home');
+
+        $user = Auth::user();
+        if(!strcmp($user->role, 'Member'))
+            return redirect()->route('home');
+        elseif (!strcmp($user->role, 'Admin'))
+            return redirect()->route('admin.home');
 
     }
 
@@ -182,7 +187,7 @@ class AdminController extends Controller
     public function register(Request $request){
         $request->validate([
             'name'=>'required',
-            'email'=>'required|email',
+            'email'=>'required|email|unique:users,email',
             'password'=>'required|min:8|max:20',
             'confirm'=>'required|same:password',
             'terms'=> 'required'

@@ -16,6 +16,7 @@
 .background{
     background-image: url('/background.jpg');
     background-size: cover;
+    min-height: 750px;
 }
 
 .outer {

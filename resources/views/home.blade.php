@@ -56,49 +56,31 @@
         </div>
         <h3 class="subtitle"><b>New Episode Weekly</b></h3>
         <div class="cards">
-            <div class="card" style="width: 18rem;">
-                <a href="Route::get('/details', function () {
-    return view('details');
-});">
-                    <img class="card-img-top" src="/storage//posters/Avengers Endgame.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>TITLE</b></h5>
-                        <p>Year</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <a href="{{asset('details')}}">
-                    <img class="card-img-top" src="/storage//posters/Moonlight.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">TITLE</h5>
-                        <p>Year</p>
-                    </div>
-                </a>
-            </div>
+            @foreach($series as $serial)
+                <div class="card" style="width: 18rem;">
+                    <a href="{{asset("details/$serial->id")}}">
+                        <img class="card-img-top" src="/storage/{{ $serial->poster }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $serial->title }}</h5>
+                            <p>{{ $serial->year }}</p>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
         <h3 class="subtitle"><b>Anime Collection</b></h3>
         <div class="cards">
-            <div class="card" style="width: 18rem;">
-                <a href="{{asset('details')}}">
-                    <img class="card-img-top" src="/storage//posters/Avengers Endgame.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>TITLE</b></h5>
-                        <p>Year</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <a href="{{asset('details')}}">
-                    <img class="card-img-top" src="/storage//posters/Moonlight.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">TITLE</h5>
-                        <p>Year</p>
-                    </div>
-                </a>
-            </div>
+            @foreach($anime as $ani)
+                <div class="card" style="width: 18rem;">
+                    <a href="{{asset("details/$ani->id")}}">
+                        <img class="card-img-top" src="/storage/{{ $ani->poster }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $ani->title }}</h5>
+                            <p>{{ $ani->year }}</p>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
     </div>

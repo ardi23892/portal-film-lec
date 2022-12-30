@@ -16,10 +16,10 @@ class CategorySeeder extends Seeder
     {
         //
         Category::query()->insert([
-            ['name'=>'Romance'],
+            ['name'=>'Action'],
             ['name'=>'Comedy'],
             ['name'=>'Horror'],
-            ['name'=>'Thriller']
+            ['name'=>'Romance']
         ]);
     }
 }

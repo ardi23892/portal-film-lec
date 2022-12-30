@@ -13,6 +13,8 @@ class PageController extends Controller
     public function index()
     {
         $movies = Movie::query()->where('type_id', 1)->get();
+        $series = Movie::query()->where('type_id',2)->get();
+        $anime = Movie::query()->where('type_id', 3)->get();
         $types= Type::all();
         $categories= Category::all();
 
@@ -20,7 +22,9 @@ class PageController extends Controller
             'title'=>'Home | Portal Film',
             'types'=>$types,
             'categories'=>$categories,
-            'movies'=>$movies
+            'movies'=>$movies,
+            'series'=>$series,
+            'anime'=>$anime
         ]);
     }
 
@@ -29,8 +33,15 @@ class PageController extends Controller
         $movie = Movie::find($id);
         $title = $movie->title." | Portal Film";
         $movie_ctg = $movie->category;
-        $category = Category::find($movie_ctg[0]['id']);
-        $recommended = $category->movie;
+
+        $recommended=collect();
+        foreach ($movie_ctg as $ctg) {
+            $category = Category::find($ctg->id);
+            $category_content = $category->movie;
+            $recommended = $recommended->concat($category_content);
+        }
+        $recommended = $recommended->unique('id')->all();
+
 
         $types= Type::all();
         $categories= Category::all();
@@ -44,15 +55,33 @@ class PageController extends Controller
         ]);
     }
 
-    public function types()
+    public function types($id)
     {
+        $content = Movie::query()->where('type_id', $id)->get();
+        $type = Type::find($id);
         $types= Type::all();
         $categories= Category::all();
 
         return view('types',[
-            'title'=>'Type name | Portal Film',
             'types'=>$types,
-            'categories'=>$categories
+            'type'=>$type,
+            'categories'=>$categories,
+            'content'=>$content,
+        ]);
+    }
+
+    public function categories($id){
+
+        $category = Category::find($id);
+        $content = $category->movie;
+        $types= Type::all();
+        $categories= Category::all();
+
+        return view('types', [
+            'types'=>$types,
+            'type'=>$category,
+            'categories'=>$categories,
+            'content'=>$content,
         ]);
     }
 

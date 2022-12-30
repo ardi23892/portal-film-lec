@@ -14,7 +14,7 @@ class MovieSeeder extends Seeder
      */
     public function run()
     {
-        //
+//        THIS IS A TESTING SEEDER
         Movie::query()->insert([
             [
                 'type_id'=>1,

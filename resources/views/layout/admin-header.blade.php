@@ -18,7 +18,13 @@
             @endforeach
         </ul>
         <ul>
-            <li><a href="">Log out</a></li>
+            <li><div class="dropdown">
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button type="submit" class="dropbtn">Sign Out</button>
+                    </form>
+                </div>
+            </li>
         </ul>
     </div>
 </div>
