@@ -9,6 +9,7 @@ use App\Models\Type;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -115,12 +116,19 @@ class AdminController extends Controller
     public function show($id)
     {
        $content = Movie::find($id);
+       $ctg_list = $content->category;
+       $category=[];
+       foreach ($ctg_list as $ctg){
+           array_push($category, $ctg->id);
+       }
+
         $types= Type::all();
         $categories= Category::all();
        return view('admin.edit-content', [
            'content'=>$content,
            'types'=>$types,
-           'categories'=>$categories
+           'categories'=>$categories,
+           'category'=>$category,
        ]);
 
     }
@@ -138,30 +146,46 @@ class AdminController extends Controller
             'backdrop'=>'image'
         ]);
 
-        $content = Movie::find($id);
-        $content->title = $request->input('title');
-        $content->year = $request->input('year');
-        $content->synopsis = $request->input('synopsis');
-        $content->price = $request->input('price');
-        $content->type_id = $request->input('type');
+        if(!empty($request->category)){
+            $content = Movie::find($id);
+            $content->title = $request->input('title');
+            $content->year = $request->input('year');
+            $content->synopsis = $request->input('synopsis');
+            $content->price = $request->input('price');
+            $content->type_id = $request->input('type');
 
-        if($request->hasFile('poster')){
-            $dir = 'storage/'.$content->poster;
-            File::delete($dir);
-            $poster =$request->poster->store('posters');
-            $content->poster = $poster;
+            if($request->hasFile('poster')){
+                $dir = 'storage/'.$content->poster;
+                File::delete($dir);
+                $poster =$request->poster->store('posters');
+                $content->poster = $poster;
+            }
+
+            if($request->hasFile('backdrop')){
+                $dir = 'storage/'.$content->backdrop;
+                File::delete($dir);
+                $backdrop =$request->backdrop->store('backdrop');
+                $content->backdrop = $backdrop;
+            }
+
+            $content->save();
+
+            Movie_Category::where('movie_id', $id)->delete();
+            $category = $request->category;
+
+            foreach ($category as $ctg){
+                $content_category = new Movie_Category();
+                $content_category->movie_id = $id;
+                $content_category->category_id = $ctg;
+                $content_category->save();
+            }
+
+
+            return redirect()->route('admin.home');
+        }else{
+            return back()->withErrors('You need to select at least 1 category!');
         }
 
-        if($request->hasFile('backdrop')){
-            $dir = 'storage/'.$content->backdrop;
-            File::delete($dir);
-            $backdrop =$request->backdrop->store('backdrop');
-            $content->backdrop = $backdrop;
-        }
-
-        $content->save();
-
-        return redirect()->route('admin.home');
     }
 
 

@@ -49,6 +49,14 @@
                 <label for="backdrop">Backdrop Image</label>
                 <input type="file" id="backdrop" class="form-control" name="backdrop">
             </div>
+            <div>Category</div>
+            @foreach($categories as $ctg)
+                <div class="form-group form-check-inline">
+                    <input type="checkbox" class="btn-check" name="category[]" id="{{ $ctg->name }}" value="{{ $ctg->id }}" autocomplete="off"
+                    {{ (in_array($ctg->id, $category) ? 'checked' : '')}}>
+                    <label class="btn btn-outline-primary" for="{{ $ctg->name }}">{{ $ctg->name }}</label><br>
+                </div>
+            @endforeach
             <div>
                 @if($errors->any())
                     <p class="text-danger">{{$errors->first()}}</p>
