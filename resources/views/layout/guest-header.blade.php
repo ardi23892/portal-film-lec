@@ -18,7 +18,7 @@
             @endforeach
         </ul>
         <ul>
-            <li><input type="text" placeholder="Search.."></li>
+            <li><input type="search" class="form-control" placeholder="Search.."></li>
             <li><a href="{{route('index_login')}}">Sign In</a></li>
         </ul>
     </div>

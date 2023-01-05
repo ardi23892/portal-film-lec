@@ -41,3 +41,5 @@ Route::get('/register', [PageController::class, 'index_register'])->name('index_
 Route::post('/auth/register', [AdminController::class, 'register'])->name('register');
 
 Route::post('/auth/logout', [AdminController::class, 'logout'])->name('logout');
+
+Route::get('/profile', [PageController::class, 'profile'])->name('profile');

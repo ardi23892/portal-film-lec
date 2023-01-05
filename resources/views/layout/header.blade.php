@@ -18,7 +18,7 @@
             @endforeach
         </ul>
         <ul>
-            <li><input type="text" placeholder="Search.."></li>
+            <li><input type="search" class="form-control" placeholder="Search.."></li>
             <li><div class="dropdown">
                     <form action="{{route('logout')}}" method="post">
                         @csrf

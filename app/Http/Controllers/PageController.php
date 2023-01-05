@@ -122,4 +122,15 @@ class PageController extends Controller
             'categories'=>$categories
         ]);
     }
+
+    public function profile(){
+
+        $types= Type::all();
+        $categories= Category::all();
+
+        return view('profile',[
+            'types'=>$types,
+            'categories'=>$categories
+        ]);
+    }
 }
