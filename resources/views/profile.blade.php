@@ -9,33 +9,41 @@
         <center><img src="{{asset('storage/pfp_placeholder.webp')}}" class="rounded-circle" width="150px"><br></center>
         <center><h4 class="h4">{{ $user->name }}</h4><br></center>
         <h4 class="h4">Watchlist</h4>
-        <div class="cards">
-            {{-- @foreach($movies as $movie) --}}
-                <div class="card" style="width: 18rem;">
-                    <a href="{{-- asset("details/$movie->id") --}}">
-                    <img class="card-img-top" src="/storage/{{-- $movie->poster --}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{-- $movie->title --}}</h5>
-                        <p>{{-- $movie->year --}}</p>
+            @if($watchlist->isNotEmpty())
+                <div class="cards">
+                @foreach($watchlist as $wt)
+                    <div class="card" style="width: 18rem;">
+                        <a href="{{-- asset("details/$wt->id") --}}">
+                            <img class="card-img-top" src="/storage/{{-- $wt->poster --}}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{-- $wt->title --}}</h5>
+                                <p>{{-- $wt->year --}}</p>
+                            </div>
+                        </a>
                     </div>
-                    </a>
+                @endforeach
                 </div>
-            {{-- @endforeach --}}
-        </div>
+            @else
+                <h5 style="margin: 15px">You don't have any movies in your watchlist!</h5>
+            @endif
         <h4 class="h4">Rented Movies</h4>
-        <div class="cards">
-            {{-- @foreach($movies as $movie) --}}
-                <div class="card" style="width: 18rem;">
-                    <a href="{{-- asset("details/$movie->id") --}}">
-                    <img class="card-img-top" src="/storage/{{-- $movie->poster --}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{-- $movie->title --}}</h5>
-                        <p>{{-- $movie->year --}}</p>
-                    </div>
-                    </a>
+            @if($rented->isNotEmpty())
+                <div class="cards">
+                    @foreach($rented as $rent)
+                        <div class="card" style="width: 18rem;">
+                            <a href="{{-- asset("details/$rent->id") --}}">
+                                <img class="card-img-top" src="/storage/{{-- $rent->poster --}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{-- $rent->title --}}</h5>
+                                    <p>{{-- $rent->year --}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
-            {{-- @endforeach --}}
-        </div>
+            @else
+                <h5 style="margin: 15px">You haven't rented any movies!</h5>
+            @endif
         <div>
             @if(session('success'))
                 <div class="mb-2" style="padding: 20px">

@@ -166,6 +166,9 @@ class PageController extends Controller
 
         $user = User::find(Auth::id());
 
+        $watchlist = collect();
+        $rented = collect();
+
         $types= Type::all();
         $categories= Category::all();
 
@@ -173,6 +176,8 @@ class PageController extends Controller
             'types'=>$types,
             'categories'=>$categories,
             'user'=>$user,
+            'watchlist'=>$watchlist,
+            'rented'=>$rented,
         ]);
     }
 
