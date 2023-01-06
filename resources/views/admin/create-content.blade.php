@@ -9,7 +9,7 @@
             @csrf
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" name="title" class="form-control" id="title">
+                <input type="text" name="title" class="form-control" id="title" value="{{ old('title') }}">
             </div>
             <div class="form-group">
                 <label for="year">Release Year:</label>
@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label for="synopsis">Synopsis:</label>
-                <textarea  name="synopsis" class="form-control" rows="5" id="synopsis"></textarea>
+                <textarea  name="synopsis" class="form-control" rows="5" id="synopsis">{{ old('synopsis') }}</textarea>
             </div>
             <div class="form-group">
                 <label for="price">Rent Price:</label>

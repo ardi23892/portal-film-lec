@@ -9,8 +9,8 @@
         <table class="table table-bordered">
             <tr>
                 <th>ID</th>
-                <th>Poster Image</th>
                 <th>Title</th>
+                <th>Poster Image</th>
                 <th>Released Year</th>
                 <th style="width: 500px">Synopsis</th>
                 <th>Content Type</th>
@@ -23,7 +23,7 @@
                     <td>{{ $ct->title }}</td>
                     <td><img src="{{asset("storage/$ct->poster")}}" style="width: 100px; height: auto"></td>
                     <td>{{ $ct->year }}</td>
-                    <td>{{ $ct->synopsis }}</td>
+                    <td>{{ \Illuminate\Support\Str::limit($ct->synopsis, 380) }}</td>
                     <td>{{ $ct->type['name'] }}</td>
                     <td>{{ $ct->price }}</td>
                     <td>

@@ -40,8 +40,7 @@ class PageController extends Controller
             $category_content = $category->movie;
             $recommended = $recommended->concat($category_content);
         }
-        $recommended = $recommended->unique('id')->all();
-
+        $recommended = $recommended->unique('id')->random(4);
 
         $types= Type::all();
         $categories= Category::all();

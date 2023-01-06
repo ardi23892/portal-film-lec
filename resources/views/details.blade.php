@@ -25,19 +25,18 @@
     <div class="background">
         <div class="container">
             <h3 class="subtitle"><b>You might also like...</b></h3>
-            @foreach($recommended as $rec)
             <div class="cards">
-                <div class="card" style="width: 18rem;">
-                    <a href="{{asset("details/$rec->id")}}">
-                        <img class="card-img-top" src="/storage/{{$rec->poster}}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $rec->title }}</h5>
-                            <p>{{ $rec->year }}</p>
-                        </div>
-                    </a>
-                </div>
+                @foreach($recommended as $rec)
+                    <div class="card" style="width: 18rem; height: 550px">
+                        <a href="{{asset("details/$rec->id")}}">
+                            <img class="card-img-top" src="/storage/{{$rec->poster}}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $rec->title }}</h5>
+                                <p>{{ $rec->year }}</p>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
             </div>
-        </div>
     </div>
 @endsection
