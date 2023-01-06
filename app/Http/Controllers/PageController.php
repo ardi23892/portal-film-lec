@@ -13,8 +13,11 @@ class PageController extends Controller
     public function index()
     {
         $movies = Movie::query()->where('type_id', 1)->get();
+        $movies = $movies->random(8);
         $series = Movie::query()->where('type_id',2)->get();
+        $series = $series->random(8);
         $anime = Movie::query()->where('type_id', 3)->get();
+        $anime = $anime->random(8);
         $types= Type::all();
         $categories= Category::all();
 
@@ -69,6 +72,23 @@ class PageController extends Controller
         ]);
     }
 
+    public function search(Request $request){
+        $keyword = $request->search;
+        $content = Movie::where('title', 'like', "%".$keyword."%")->get();
+        $subtitle = $keyword;
+
+        $types= Type::all();
+        $categories= Category::all();
+
+        return view('search',[
+            'title'=>'Admin | Portal Film',
+            'subtitle'=>$subtitle,
+            'content'=>$content,
+            'types'=>$types,
+            'categories'=>$categories
+        ]);
+    }
+
     public function categories($id){
 
         $category = Category::find($id);
@@ -87,9 +107,27 @@ class PageController extends Controller
     public function admin()
     {
         $content = Movie::all();
+        $content = $content->sortBy('title', SORT_NATURAL);
         $types= Type::all();
         $categories= Category::all();
         $subtitle = 'All';
+
+        return view('admin.admin',[
+            'title'=>'Admin | Portal Film',
+            'subtitle'=>$subtitle,
+            'content'=>$content,
+            'types'=>$types,
+            'categories'=>$categories
+        ]);
+    }
+
+    public function admin_search(Request $request){
+        $keyword = $request->search;
+        $content = Movie::where('title', 'like', "%".$keyword."%")->get();
+        $subtitle = "Search/\"".$keyword."\"";
+
+        $types= Type::all();
+        $categories= Category::all();
 
         return view('admin.admin',[
             'title'=>'Admin | Portal Film',

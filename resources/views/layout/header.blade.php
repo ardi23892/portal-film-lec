@@ -7,8 +7,7 @@
                     <button onclick="showCategories()" class="dropbtn">Categories</button>
                     <div class="dropdown-content" id="categories">
                         @foreach($categories as $ctg)
-                            <a href="">{{ $ctg->name }}</a>
-{{--                            <a href="{{asset("category/$ctg->id")}}">{{ $ctg->name }}</a>--}}
+                            <a href="{{asset("category/$ctg->id")}}">{{ $ctg->name }}</a>
                         @endforeach
                     </div>
                 </div>
@@ -18,7 +17,12 @@
             @endforeach
         </ul>
         <ul>
-            <li><input type="search" class="form-control" placeholder="Search.."></li>
+            <li>
+                <form action="{{route('search')}}" method="post">
+                    @csrf
+                    <input type="search" name="search" id="search" class="form-control" placeholder="Search...">
+                </form>
+            </li>
             <li><div class="dropdown">
                     <form action="{{route('logout')}}" method="post">
                         @csrf

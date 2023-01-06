@@ -37,6 +37,7 @@ class AdminController extends Controller
 
         $category = Category::find($id);
         $content = $category->movie;
+        $content = $content->sortBy('title', SORT_NATURAL);
         $title = $category->name.' | Portal Film';
         $subtitle = 'Category/'.$category->name;
 
@@ -56,6 +57,7 @@ class AdminController extends Controller
 
         $type = Type::find($id);
         $content = $type->movie;
+        $content = $content->sortBy('title', SORT_NATURAL);
         $title = $type->name.' | Portal Film';
         $subtitle = 'Type/'.$type->name;
 

@@ -16,7 +16,7 @@
 .background{
     background-image: url('/background.jpg');
     background-size: cover;
-    min-height: 750px;
+    min-height: 800px;
 }
 
 .outer {
@@ -28,6 +28,7 @@
 }
 
 footer{
+    bottom: 0;
     padding-bottom: 9px;
     background: black;
     color: white;

@@ -25,7 +25,7 @@
 <body>
 @yield('content')
 </body>
-<footer style="margin-top: 3rem">
+<footer>
     @include('layout.footer')
 </footer>
 </html>
