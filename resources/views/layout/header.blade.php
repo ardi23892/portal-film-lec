@@ -23,6 +23,7 @@
                     <input type="search" name="search" id="search" class="form-control" placeholder="Search...">
                 </form>
             </li>
+            <li><a href="{{route('profile')}}">My Profile</a></li>
             <li><div class="dropdown">
                     <form action="{{route('logout')}}" method="post">
                         @csrf

@@ -6,8 +6,8 @@
         <div class="card" style="background: white; padding: 1rem">
         <center class="h3"><b>Profile</b></center>
         <hr>
-        <img src="{{asset('storage/pfp_placeholder.png')}}" class="rounded-circle" width="150px"><br>
-        <h4 class="h4" style="margin-left: 15px;">John Doe</h4><br>
+        <center><img src="{{asset('storage/pfp_placeholder.webp')}}" class="rounded-circle" width="150px"><br></center>
+        <center><h4 class="h4">{{ $user->name }}</h4><br></center>
         <h4 class="h4">Watchlist</h4>
         <div class="cards">
             {{-- @foreach($movies as $movie) --}}
@@ -37,9 +37,13 @@
             {{-- @endforeach --}}
         </div>
         <div>
+            @if(session('success'))
+                <div class="mb-2" style="padding: 20px">
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                </div>
+            @endif
           <hr>
-          <a href="reset-password">Change account password</a><br>
-          <a class="btn btn-danger" href="auth/logout">Logout</a><br>
+          <center><a href="{{route('index_edit_password')}}">Change account password</a><br></center>
         </div>
     </div>
   </div>

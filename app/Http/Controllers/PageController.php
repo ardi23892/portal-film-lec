@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -162,10 +164,24 @@ class PageController extends Controller
 
     public function profile(){
 
+        $user = User::find(Auth::id());
+
         $types= Type::all();
         $categories= Category::all();
 
         return view('profile',[
+            'types'=>$types,
+            'categories'=>$categories,
+            'user'=>$user,
+        ]);
+    }
+
+    public function index_edit_password(){
+
+        $types= Type::all();
+        $categories= Category::all();
+
+        return view('auth.edit_password', [
             'types'=>$types,
             'categories'=>$categories
         ]);

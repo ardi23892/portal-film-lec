@@ -43,6 +43,9 @@ Route::post('/auth/login', [AdminController::class, 'login'])->name('login');
 Route::get('/register', [PageController::class, 'index_register'])->name('index_register');
 Route::post('/auth/register', [AdminController::class, 'register'])->name('register');
 
+Route::get('/password/edit', [PageController::class, 'index_edit_password'])->name('index_edit_password');
+Route::post('/auth/password/edit', [AdminController::class, 'edit_password'])->name('edit_password');
+
 Route::post('/auth/logout', [AdminController::class, 'logout'])->name('logout');
 
 Route::get('/profile', [PageController::class, 'profile'])->name('profile');

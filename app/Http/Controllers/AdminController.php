@@ -234,4 +234,25 @@ class AdminController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function edit_password(Request $request){
+        if (!(Hash::check($request->get('password'), Auth::user()->password))) {
+            return redirect()->back()->withErrors("Your current password does not matches with the password.");
+        }
+        if(strcmp($request->get('password'), $request->get('new-password')) == 0){
+            return redirect()->back()->withErrors("New Password cannot be same as your current password.");
+        }
+
+        $request->validate([
+            'password' => 'required',
+            'new-password'=>'required|min:8|max:20',
+            'confirm'=>'required|same:new-password',
+        ]);
+
+        $user = Auth::user();
+        $user->password = Hash::make($request->get('new-password'));
+        $user->save();
+
+        return redirect()->route('profile')->withSuccess('Successfully changed your password!');
+    }
 }
