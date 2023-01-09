@@ -27,10 +27,21 @@
                         <button class="watchlisted" type="submit">Watchlisted ✔</button>
                     </form>
                 @endif
-                <a class="rent">Rent for Rp {{ number_format($movie->price) }}</a>
+                @if($rented===null)
+                    <form action="/rent/add/{{ $movie->id }}" method="POST">
+                        @csrf
+                        <button class="rent" type="submit" onclick="return confirm('You will be purchasing this movie, confirm to proceed payment')">Purchase for Rp {{ number_format($movie->price) }}</button>
+                    </form>
+                @else
+                    <form action="/rent/add/{{ $movie->id }}" method="POST">
+                        @csrf
+                        <button class="rent" type="submit">Play ▶</button>
+                    </form>
+                @endif
+{{--                <a class="rent">Rent for Rp {{ number_format($movie->price) }}</a>--}}
             @else
                 <a href="{{route('index_login')}}" class="watchlist">Add to Watchlist</a>
-                <a href="{{route('index_login')}}" class="rent">Rent for Rp {{ number_format($movie->price) }}</a>
+                <a href="{{route('index_login')}}" class="rent">Purchase for Rp {{ number_format($movie->price) }}</a>
             @endif
             <img  class="poster" src="/storage/{{ $movie->poster }}" alt="Poster">
         </div>

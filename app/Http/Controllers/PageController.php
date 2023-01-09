@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Movie;
+use App\Models\Rent;
 use App\Models\Type;
 use App\Models\User;
 use App\Models\Watchlist;
@@ -57,7 +58,14 @@ class PageController extends Controller
             ])->first();
         }
 
-//        dd($wted);
+        $rented = collect();
+        if(Auth::check()){
+            $rented = Rent::where([
+                ['user_id','=',Auth::id()],
+                ['movie_id','=',$id]
+            ])->first();
+        }
+//        dd($rented);
 
         $types= Type::all();
         $categories= Category::all();
@@ -68,7 +76,8 @@ class PageController extends Controller
             'types'=>$types,
             'categories'=>$categories,
             'recommended'=>$recommended,
-            'wted'=>$wted
+            'wted'=>$wted,
+            'rented'=>$rented
         ]);
     }
 
@@ -182,7 +191,7 @@ class PageController extends Controller
         $watchlist = Watchlist::where('user_id','=',Auth::user()->id)->get();
 //        dd($watchlist);
 
-        $rented = collect();
+        $rented = Rent::where('user_id','=',Auth::id())->get();
 
         $types= Type::all();
         $categories= Category::all();

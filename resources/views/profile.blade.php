@@ -1,8 +1,8 @@
 @extends('layout.master')
 @section('title', 'Profile')
 @section('content')
-<div class="background p-5" style="height: 1250px">
-    <div class="container" style="width:700px">
+<div class="background p-5" style="height: 1750px">
+    <div class="container" style="width:1000px">
         <div class="card" style="background: white; padding: 1rem">
         <center class="h3"><b>Profile</b></center>
         <hr>
@@ -26,16 +26,16 @@
             @else
                 <h5 style="margin: 15px">You don't have any movies in your watchlist!</h5>
             @endif
-        <h4 class="h4" style="margin-top: 3rem">Rented Movies</h4>
+        <h4 class="h4" style="margin-top: 3rem">Purchased Movies</h4>
             @if($rented->isNotEmpty())
                 <div class="cards">
                     @foreach($rented as $rent)
                         <div class="card" style="width: 18rem;">
-                            <a href="{{-- asset("details/$rent->id") --}}">
-                                <img class="card-img-top" src="/storage/{{-- $rent->poster --}}" alt="Card image cap">
+                            <a href="{{ asset("details/".$rent->movie->id)}}">
+                                <img class="card-img-top" src="{{asset("/storage/".$rent->movie->poster)}}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{-- $rent->title --}}</h5>
-                                    <p>{{-- $rent->year --}}</p>
+                                    <h5 class="card-title">{{ $rent->movie->title }}</h5>
+                                    <p>{{ $rent->movie->year }}</p>
                                 </div>
                             </a>
                         </div>

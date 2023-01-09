@@ -52,3 +52,4 @@ Route::post('/auth/logout', [AdminController::class, 'logout'])->name('logout');
 Route::get('/profile', [PageController::class, 'profile'])->name('profile');
 
 Route::post('/watchlist/add/{id}', [UserController::class, 'addToWatchList']);
+Route::post('/rent/add/{id}', [UserController::class, 'rentMovie']);

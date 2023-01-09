@@ -79,6 +79,7 @@ class AdminController extends Controller
             'synopsis'=>'required',
             'price'=>'required',
             'type'=>'required',
+            'url'=>'required|url',
             'poster'=>'required|image',
             'backdrop'=>'required|image'
         ]);
@@ -94,6 +95,7 @@ class AdminController extends Controller
             $newContent->synopsis = $request->input('synopsis');
             $newContent->price = $request->input('price');
             $newContent->type_id = $request->input('type');
+            $newContent->url = $request->input('url');
             $newContent->poster = $poster;
             $newContent->backdrop = $backdrop;
             $newContent->save();
@@ -144,6 +146,7 @@ class AdminController extends Controller
             'synopsis'=>'required',
             'price'=>'required',
             'type'=>'required',
+            'url'=>'required|url',
             'poster'=>'image',
             'backdrop'=>'image'
         ]);
@@ -155,6 +158,7 @@ class AdminController extends Controller
             $content->synopsis = $request->input('synopsis');
             $content->price = $request->input('price');
             $content->type_id = $request->input('type');
+            $content->url = $request->input('url');
 
             if($request->hasFile('poster')){
                 $dir = 'storage/'.$content->poster;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rent;
 use App\Models\User;
 use App\Models\Watchlist;
 use Illuminate\Http\Request;
@@ -31,6 +32,15 @@ class UserController extends Controller
         $watchlist->save();
 
         return redirect()->route('detail', ['id'=>$id])->with('alert','Movie added to watchlist');
+    }
+
+    public function rentMovie($id){
+        $rent = new Rent();
+        $rent->user_id = Auth::id();
+        $rent->movie_id = $id;
+        $rent->save();
+
+        return redirect()->route('detail', ['id'=>$id])->with('alert','Successfully purchased a movie!');
     }
 
 }

@@ -32,6 +32,10 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="url">Movie URL:</label>
+                <input type="url" name="url" class="form-control" id="url" value="{{ old('url') }}">
+            </div>
+            <div class="form-group">
                 <label for="poster">Poster Image</label>
                 <input type="file" id="poster" class="form-control" name="poster">
             </div>
