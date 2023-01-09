@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminController;
 
@@ -21,7 +22,7 @@ use App\Http\Controllers\AdminController;
 //});
 
 Route::get('/', [PageController::class, 'index'])->name('home');
-Route::get('/details/{id}', [PageController::class, 'details']);
+Route::get('/details/{id}', [PageController::class, 'details'])->name('detail');
 Route::get('/type/{id}', [PageController::class, 'types'])->name('types');
 Route::get('/category/{id}', [PageController::class, 'categories']);
 Route::post('/search', [PageController::class, 'search'])->name('search');
@@ -49,3 +50,5 @@ Route::post('/auth/password/edit', [AdminController::class, 'edit_password'])->n
 Route::post('/auth/logout', [AdminController::class, 'logout'])->name('logout');
 
 Route::get('/profile', [PageController::class, 'profile'])->name('profile');
+
+Route::post('/watchlist/add/{id}', [UserController::class, 'addToWatchList']);

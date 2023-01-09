@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Type;
 use App\Models\User;
+use App\Models\Watchlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,6 +48,17 @@ class PageController extends Controller
         }
         $recommended = $recommended->unique('id')->random(4);
 
+        $wted=collect();
+
+        if(Auth::check()){
+            $wted = Watchlist::where([
+                ['user_id','=',Auth::id()],
+                ['movie_id','=', $id]
+            ])->first();
+        }
+
+//        dd($wted);
+
         $types= Type::all();
         $categories= Category::all();
 
@@ -55,7 +67,8 @@ class PageController extends Controller
             'title'=>$title,
             'types'=>$types,
             'categories'=>$categories,
-            'recommended'=>$recommended
+            'recommended'=>$recommended,
+            'wted'=>$wted
         ]);
     }
 
@@ -166,7 +179,9 @@ class PageController extends Controller
 
         $user = User::find(Auth::id());
 
-        $watchlist = collect();
+        $watchlist = Watchlist::where('user_id','=',Auth::user()->id)->get();
+//        dd($watchlist);
+
         $rented = collect();
 
         $types= Type::all();

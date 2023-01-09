@@ -6,6 +6,9 @@
     {{$title}}
 @endsection
 @section('content')
+    @if ($message=Session::get('alert'))
+        <script type="text/javascript">alert( '{{ $message }}')</script>
+    @endif
     <div class="body" style="background-image: url('/storage/{{ $movie->backdrop }}')">
         <div class="movie-container">
             <div class="title">{{ $movie->title }}</div>
@@ -13,7 +16,17 @@
                 <p>{{ $movie->synopsis }}</p>
             </div>
             @if(\Illuminate\Support\Facades\Auth::check())
-                <a class="watchlist">Add to Watchlist</a>
+                @if($wted===null)
+                    <form action="/watchlist/add/{{ $movie->id }}" method="POST">
+                        @csrf
+                        <button class="watchlist" type="submit">Add to Watchlist</button>
+                    </form>
+                @else
+                    <form action="/watchlist/add/{{ $movie->id }}" method="POST">
+                        @csrf
+                        <button class="watchlisted" type="submit">Watchlisted ✔</button>
+                    </form>
+                @endif
                 <a class="rent">Rent for Rp {{ number_format($movie->price) }}</a>
             @else
                 <a href="{{route('index_login')}}" class="watchlist">Add to Watchlist</a>
