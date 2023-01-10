@@ -2,6 +2,13 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\adminMiddleware;
+use App\Http\Middleware\cekRole;
+use App\Http\Middleware\Guest;
+use App\Http\Middleware\guestMiddleware;
+use App\Http\Middleware\loggedIn;
+use App\Http\Middleware\memberMiddleware;
+use App\Http\Middleware\notAdmin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +70,9 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'cekrole'=>cekRole::class,
+        'guest'=>Guest::class,
+        'notadmin'=>notAdmin::class,
+        'loggedin'=>loggedIn::class,
     ];
 }
