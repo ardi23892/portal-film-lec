@@ -21,7 +21,7 @@ class notAdmin
             if(strcmp('Member', Auth::user()->role)==0){
                 return $next($request);
             }else
-                return redirect()->route('admin');
+                return redirect()->route('admin.home');
         }
 
         return $next($request);
