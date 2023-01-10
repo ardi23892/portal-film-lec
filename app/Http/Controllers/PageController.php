@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Rent;
@@ -22,6 +23,7 @@ class PageController extends Controller
         $series = $series->random(8);
         $anime = Movie::query()->where('type_id', 3)->get();
         $anime = $anime->random(8);
+        $carousel = Carousel::all();
         $types= Type::all();
         $categories= Category::all();
 
@@ -31,7 +33,8 @@ class PageController extends Controller
             'categories'=>$categories,
             'movies'=>$movies,
             'series'=>$series,
-            'anime'=>$anime
+            'anime'=>$anime,
+            'carousel'=>$carousel
         ]);
     }
 

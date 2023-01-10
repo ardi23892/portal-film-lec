@@ -15,7 +15,7 @@
             @foreach($types as $type)
                 <li><a href="/admin/type/{{$type->id}}">{{ $type->name }}</a></li>
             @endforeach
-            <li><a href="/admin/carousel">Carousel</a></li>
+            <li><a href="{{route('carousel')}}">Carousel</a></li>
         </ul>
         <ul>
             <li>

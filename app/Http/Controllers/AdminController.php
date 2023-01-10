@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carousel;
 use App\Models\Category;
 use App\Models\Movie;
 use App\Models\Movie_Category;
@@ -25,6 +26,17 @@ class AdminController extends Controller
 
         return view('admin.create-content',[
             'title'=>'Create New Content | Portal Film',
+            'types'=>$types,
+            'categories'=>$categories
+        ]);
+    }
+
+    public function create_carousel(){
+        $types= Type::all();
+        $categories= Category::all();
+
+        return view('admin.create-carousel',[
+            'title'=>'Create New Carousel | Portal Film',
             'types'=>$types,
             'categories'=>$categories
         ]);
@@ -70,6 +82,42 @@ class AdminController extends Controller
         ]);
     }
 
+    public function carousel()
+    {
+        $content = Carousel::all();
+        $ct_count = $content->count();
+        $content = $content->sortBy('id', SORT_NATURAL);
+        $types= Type::all();
+        $categories= Category::all();
+        $subtitle = 'All/Carousel';
+
+        return view('admin.carousel',[
+            'title'=>'Admin | Portal Film',
+            'subtitle'=>$subtitle,
+            'content'=>$content,
+            'types'=>$types,
+            'categories'=>$categories,
+            'ct_count'=>$ct_count
+        ]);
+    }
+
+    public function store_carousel(Request $request){
+        $request->validate(([
+            'title'=>'required',
+            'caption'=>'required',
+            'image'=>'required|image'
+        ]));
+
+        $newCarousel = new Carousel();
+        $newCarousel->title = $request->input('title');
+        $newCarousel->caption = $request->input('caption');
+        $newCarousel->movie_id = 1;
+        $image = $request->image->store('carousel');
+        $newCarousel->imagePath = $image;
+        $newCarousel->save();
+
+        return redirect()->route('carousel')->withSuccess('Successfully added new content!');
+    }
 
     public function store(Request $request)
     {
@@ -116,6 +164,41 @@ class AdminController extends Controller
         }
     }
 
+    public function show_carousel($id){
+        $content = Carousel::find($id);
+        $types= Type::all();
+        $categories= Category::all();
+
+        return view('admin.edit-carousel', [
+            'content'=>$content,
+            'types'=>$types,
+            'categories'=>$categories,
+        ]);
+    }
+
+    public function edit_carousel($id, Request $request){
+        $request->validate(([
+            'title'=>'required',
+            'caption'=>'required',
+            'image'=>'image'
+        ]));
+
+        $newCarousel = Carousel::find($id);
+        $newCarousel->title = $request->input('title');
+        $newCarousel->caption = $request->input('caption');
+
+        if($request->hasFile('image')){
+            $dir = 'storage/'.$newCarousel->imagePath;
+            File::delete($dir);
+            $image = $request->image->store('carousel');
+            $newCarousel->imagePath = $image;
+        }
+
+        $newCarousel->save();
+
+        return redirect()->route('carousel')->withSuccess('Successfully edited content!');
+        return redirect()->route('carousel')->withSuccess('Successfully edited content!');
+    }
 
     public function show($id)
     {
@@ -203,6 +286,15 @@ class AdminController extends Controller
         $movie->delete();
 
         return redirect()->route('admin.home')->withSuccess('Successfully deleted a movie!');
+    }
+
+    public function delete_carousel($id){
+        $carousel = Carousel::find($id);
+        $image = 'storage/'.$carousel->imagePath;
+        File::delete($image);
+        $carousel->delete();
+
+        return redirect()->route('carousel')->withSuccess('Successfully deleted a content!');
     }
 
 

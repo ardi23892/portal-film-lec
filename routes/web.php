@@ -34,11 +34,17 @@ Route::get('/admin/category/{id}', [AdminController::class, 'category']);
 Route::get('/admin/type/{id}', [AdminController::class, 'type']);
 Route::get('/admin/create', [AdminController::class, 'create'])->name('create');
 Route::get('admin/edit/{id}', [AdminController::class, 'show']);
+Route::get('/admin/edit/carousel/{id}', [AdminController::class, 'show_carousel']);
+Route::post('/admin/edit/carousel/{id}', [AdminController::class, 'edit_carousel']);
 Route::post('/admin/search', [PageController::class, 'admin_search'])->name('admin.search');
+Route::get('/admin/carousel', [AdminController::class, 'carousel'])->name('carousel');
+Route::get('/admin/carousel/create', [AdminController::class, 'create_carousel'])->name('create.carousel');
 
+Route::post('/admin/carousel/create', [AdminController::class, 'store_carousel'])->name('create_new_carousel');
 Route::post('/admin/create', [AdminController::class, 'store'])->name('create_new_content');
 Route::post('/admin/edit/{id}', [AdminController::class, 'edit']);
 Route::get('/admin/delete/{id}', [AdminController::class, 'delete']);
+Route::get('/admin/delete/carousel/{id}', [AdminController::class, 'delete_carousel']);
 
 Route::get('/login', [PageController::class, 'index_login'])->name('index_login');
 Route::post('/auth/login', [AdminController::class, 'login'])->name('login');
