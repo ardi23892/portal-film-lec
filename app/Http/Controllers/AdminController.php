@@ -8,13 +8,10 @@ use App\Models\Movie;
 use App\Models\Movie_Category;
 use App\Models\Type;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
@@ -304,7 +301,9 @@ class AdminController extends Controller
             'password'=>'required',
         ]);
 
-        if(!Auth::attempt($credential,$request->input('remember'))){
+        $remember = $request->has('remember');
+
+        if(!Auth::attempt($credential,$remember)){
             return redirect()->back()->withErrors('Invalid email or password');
         }
 
