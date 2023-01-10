@@ -7,7 +7,7 @@
 @endsection
 @section('content')
     <div class="body" style="background-image: url('/storage/{{ $movie->backdrop }}')">
-        <iframe class="video" src="{{url("//www.youtube.com/embed/".$code)}}" frameborder="0" allowfullscreen></iframe>
+        <iframe class="video" src="{{url("//www.youtube.com/embed/".$code."?autoplay=1")}}" frameborder="0" allowfullscreen allow="autoplay"></iframe>
     </div>
     <div class="background">
         <div class="container">

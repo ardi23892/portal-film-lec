@@ -28,7 +28,7 @@
             @endif
         <h4 class="h4" style="margin-top: 3rem">Purchased Movies</h4>
             @if($rented->isNotEmpty())
-                <div class="cards">
+                <div class="cards" style="overflow-x: auto">
                     @foreach($rented as $rent)
                         <div class="card" style="width: 18rem;">
                             <a href="{{ asset("details/".$rent->movie->id)}}">
