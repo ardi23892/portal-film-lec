@@ -4,6 +4,11 @@
 @endsection
 @section('content')
     <div class="container">
+        @if(session('success'))
+            <div class="mb-2" style="padding: 20px">
+                <div class="alert alert-success">{{ session('success') }}</div>
+            </div>
+        @endif
         <h3 class="subtitle" style=""><b>/{{ $subtitle }}/Content List</b></h3>
         <a href="{{route('create')}}" class="btn btn-success">+ Add new content</a>
         <table class="table table-bordered">
@@ -28,7 +33,7 @@
                     <td>{{ $ct->price }}</td>
                     <td>
                         <a href="/admin/edit/{{ $ct->id }}" class="btn btn-info">Edit</a>
-                        <a class="btn btn-danger">Delete</a>
+                        <a href="/admin/delete/{{$ct->id}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete movie?')">Delete</a>
                     </td>
                 </tr>
             @endforeach

@@ -110,7 +110,7 @@ class AdminController extends Controller
                 $content_category->save();
             }
 
-            return redirect()->route('admin.home');
+            return redirect()->route('admin.home')->withSuccess('Successfully added a movie!');
         }else{
             return back()->withErrors('You need to select at least 1 category!');
         }
@@ -187,11 +187,22 @@ class AdminController extends Controller
             }
 
 
-            return redirect()->route('admin.home');
+            return redirect()->route('admin.home')->withSuccess('Successfully edited a movie!');
         }else{
             return back()->withErrors('You need to select at least 1 category!');
         }
 
+    }
+
+    public function delete($id){
+        $movie = Movie::find($id);
+        $poster = 'storage/'.$movie->poster;
+        $backdrop = 'storage/'.$movie->backdrop;
+        File::delete($poster);
+        File::delete($backdrop);
+        $movie->delete();
+
+        return redirect()->route('admin.home')->withSuccess('Successfully deleted a movie!');
     }
 
 

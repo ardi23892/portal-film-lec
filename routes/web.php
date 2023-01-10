@@ -26,6 +26,7 @@ Route::get('/details/{id}', [PageController::class, 'details'])->name('detail');
 Route::get('/type/{id}', [PageController::class, 'types'])->name('types');
 Route::get('/category/{id}', [PageController::class, 'categories']);
 Route::post('/search', [PageController::class, 'search'])->name('search');
+Route::get('/watch/{id}',[PageController::class, 'watch']);
 
 Route::get('/admin', [PageController::class, 'admin'])->name('admin.home');
 
@@ -37,6 +38,7 @@ Route::post('/admin/search', [PageController::class, 'admin_search'])->name('adm
 
 Route::post('/admin/create', [AdminController::class, 'store'])->name('create_new_content');
 Route::post('/admin/edit/{id}', [AdminController::class, 'edit']);
+Route::get('/admin/delete/{id}', [AdminController::class, 'delete']);
 
 Route::get('/login', [PageController::class, 'index_login'])->name('index_login');
 Route::post('/auth/login', [AdminController::class, 'login'])->name('login');

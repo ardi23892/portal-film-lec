@@ -111,3 +111,18 @@
     color: darkred;
     border: 2px solid darkred;
 }
+
+.video{
+    height: 100vh;
+    width: 1920px;
+}
+
+.movie_title{
+    font-size: 22pt;
+    text-decoration: none;
+    color: white;
+}
+
+.movie_title:hover{
+    color: white;
+}

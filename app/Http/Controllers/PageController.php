@@ -77,7 +77,38 @@ class PageController extends Controller
             'categories'=>$categories,
             'recommended'=>$recommended,
             'wted'=>$wted,
-            'rented'=>$rented
+            'rented'=>$rented,
+        ]);
+    }
+
+    public function watch($id){
+        $movie = Movie::find($id);
+        $title = $movie->title." | Portal Film";
+
+        $code = $movie->url;
+        $code = explode('/',$code,4);
+        $code = $code[3];
+
+        $movie_ctg = $movie->category;
+
+        $recommended=collect();
+        foreach ($movie_ctg as $ctg) {
+            $category = Category::find($ctg->id);
+            $category_content = $category->movie;
+            $recommended = $recommended->concat($category_content);
+        }
+        $recommended = $recommended->unique('id')->random(4);
+
+        $types= Type::all();
+        $categories= Category::all();
+
+        return view('watch',[
+            'movie'=>$movie,
+            'title'=>$title,
+            'types'=>$types,
+            'categories'=>$categories,
+            'recommended'=>$recommended,
+            'code'=>$code
         ]);
     }
 

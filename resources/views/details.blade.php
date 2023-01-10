@@ -33,10 +33,7 @@
                         <button class="rent" type="submit" onclick="return confirm('You will be purchasing this movie, confirm to proceed payment')">Purchase for Rp {{ number_format($movie->price) }}</button>
                     </form>
                 @else
-                    <form action="/rent/add/{{ $movie->id }}" method="POST">
-                        @csrf
-                        <button class="rent" type="submit">Play ▶</button>
-                    </form>
+                        <a href="{{url("watch/$movie->id")}}" class="rent" type="submit">Play ▶</a>
                 @endif
 {{--                <a class="rent">Rent for Rp {{ number_format($movie->price) }}</a>--}}
             @else
